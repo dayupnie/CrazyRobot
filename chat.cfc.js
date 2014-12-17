@@ -8,10 +8,11 @@ function start(request, response){
 	});
 	request.addListener('end', function(){
 		var query = querystring.parse(postData);
-		var from = webTools.getDataFromGet(request);
+//		var from = webTools.getDataFromGet(request);
 //		console.log(from);
 		response.write(query['question']);
 		response.end();
+		console.log("OK");
 	});
 }
 exports.start = start;
