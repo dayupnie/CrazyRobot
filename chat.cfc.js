@@ -10,9 +10,15 @@ function start(request, response){
 		var query = querystring.parse(postData);
 //		var from = webTools.getDataFromGet(request);
 //		console.log(from);
-		response.write(query['question']);
-		response.end();
-		console.log("OK");
+		if(postData == ''){
+			response.writeHead(404);
+			response.end();
+			return;
+		}
+		startDealData(request,response,query['question']);
 	});
+}
+function startDealData(request,response,question){
+	var words=webTools.segmentWords(question,response);
 }
 exports.start = start;

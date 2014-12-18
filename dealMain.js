@@ -1,6 +1,6 @@
 var fs=require('fs');
 var rs = fs.createReadStream("./chat.html");
-var chat = require('./chat.cfc.js');
+var chat = require('./chat.cfc');
 function dealChatMain(request, response){
 	chat.start(request,response);
 }

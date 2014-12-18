@@ -5,7 +5,6 @@ function route(resquest, response){
 	handle['/chat.cfc']=deal.dealChatMain;
 	handle['/chat.html']=deal.dealChatHtml;
 	var path=url.parse(resquest.url).pathname;
-	console.log(url.parse(resquest.url));
 	if(typeof handle[path] === 'function')
 	{
 		console.log(path+" is dealing...")
