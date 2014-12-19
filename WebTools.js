@@ -1,7 +1,7 @@
-function connectMongoDB(){
   var mongodb =require('mongodb');
   var server = new mongodb.Server('127.0.0.1', 27017, {auto_reconnect:true});
   var db = new mongodb.Db('crazyrobot', server, {safe:true});
+function connectMongoDB(){
   db.open(function(err, db){
   if(!err){
     db.createCollection('queandans', {safe:true}, function(err, connection){
@@ -30,15 +30,8 @@ function getClientIp(req) {
   req.socket.remoteAddress ||
   req.connection.socket.remoteAddress;
 }
-function segmentWords(words,response){
-  segment.cut(words, function(wordList) {
-    wordList.forEach(function(word) {
-        console.log(word);
-    });
-});
-}
-var segment = require("nodejieba");
-segment.loadDict("./node_modules/nodejieba/dict/jieba.dict.utf8", "./node_modules/nodejieba/dict/hmm_model.utf8");
+
+
+
 exports.getClientIp=getClientIp;
-exports.segmentWords=segmentWords;
 exports.getDataFromGet = getDataFromGet;
