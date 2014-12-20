@@ -2,6 +2,10 @@
 	<head>
 	<title>CrazyRobot</title>
 	<script>
+        var 	GOTTENANSWER=1000,
+                NOANSWER=1001,
+                HAVEADDED=1002,
+                SOURCEERROR=1003;
 	function getXMLHttpRequest() {
 	    var createXHR;
 	    if (window.XMLHttpRequest) {
@@ -14,14 +18,33 @@
 	}
 	function getAnswer(){
 	    var Jsonhttp = getXMLHttpRequest();
+        var answerArea = document.getElementById("answer");
 	    Jsonhttp.onreadystatechange = function () {
 	        if (Jsonhttp.readyState == 4 && Jsonhttp.status == 200) {
-	        	document.getElementById("answer").innerHTML=Jsonhttp.responseText;
+                try {
+                    var result = eval('(' + Jsonhttp.responseText + ')');
+                    if(result.result === GOTTENANSWER){
+                        answerArea.innerHTML = result.data;
+                    }
+                    else if(result.result === NOANSWER){
+                        answerArea.innerHTML = "Sorry, I can't understand what you said, you can tech me use \"question~~answer\" to let me know what did you want to say.";
+                    }
+                    else if(result.result === HAVEADDED){
+                        answerArea.innerHTML = "OK, I understand, but I can't answer that question now...";
+                    }
+                }
+                catch(e) {
+                    answerArea.innerHTML = "Server ERROR.";
+                }
 	        }
+            else{
+                document.getElementById("answer").innerHTML="Sorry, you can't access the server."
+            }
 	    }
 	    Jsonhttp.open("POST", "/chat.cfc", true);
 	    Jsonhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	    Jsonhttp.send("question="+document.getElementById("question").value.replace("&", ";and"));
+        answerArea.innerHTML = "Loading...";
 	}
 	</script>
 	</head>

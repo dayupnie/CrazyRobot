@@ -1,18 +1,21 @@
 var webTools = require("./WebTools");
 var segment = require("nodejieba");
 var global = require('./global');
-segment.loadDict("./node_modules/nodejieba/dict/jieba.dict.utf8", "./node_modules/nodejieba/dict/hmm_model.utf8");
+segment.queryLoadDict("./node_modules/nodejieba/dict/jieba.dict.utf8", "./node_modules/nodejieba/dict/hmm_model.utf8");
 //segment.load_userdict("./")
-var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]") ;
+var pattern = new RegExp("[！￥……（）——【】；：。，、？]") ;
 function segmentWords(request, response, words){
   	var w = words.replace(pattern, "");		//replace special words from data
-	segment.cut(w, function(wordList) {
+  	//console.log(segment);
+  	segment.queryCut(w, function(wordList) {
 	  	var wl = {};
 	  	var i = 0;
 		wordList.forEach(function(word) {	//segment the words
 				wl[i++]=word;
 			});
-		getAnswerFromDatabase(wl);	//
+		var result = getAnswerFromDatabase(wl);	//
+        response.write('{"result":'+global.CODE.GOTTENANSWER+',"data":"Test answer"}');
+        response.end();
 	});
 }
 function getAnswerFromDatabase(words){
@@ -34,7 +37,7 @@ function start(request, response){
 			return;
 		}
 		var query = querystring.parse(postData);
-		if(query['question'].indexOf(";and;and")>0)
+		if(query['question'].indexOf(";and")>0)
 		{
 
 		}
