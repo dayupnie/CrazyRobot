@@ -1,5 +1,6 @@
 <html>
 	<head>
+        <meta charset="utf-8" />
 	<title>CrazyRobot</title>
 	<script>
         var 	GOTTENANSWER=1000,
@@ -29,13 +30,16 @@
                         answerArea.innerHTML = result.data;
                     }
                     else if(result.result === NOANSWER){
-                        answerArea.innerHTML = "Sorry, I can't understand what you said, you can tech me use \"question~~answer\" to let me know what did you want to say.";
+                        answerArea.innerHTML = "哦，客官不可以，我回答不了你这个问题，请用“问题～～答案”的形式告诉奴婢好吗～";
                     }
                     else if(result.result === HAVEADDED){
-                        answerArea.innerHTML = "OK, I understand, but I can't answer that question now...";
+                        answerArea.innerHTML = "好的，我接受你的“调教”了～～～";
                     }
                     else if(result.result === SOURCEERROR){
-                        answerArea.innerHTML = "Sorry, you device not found in server";
+                        answerArea.innerHTML = "噢，你在用什么和我聊天呢！！！我才不回答你！！";
+                    }
+                    else{
+                        answerArea.innerHTML = "我也不知道为什么不能回答你。。。";
                     }
                 }
                 catch(e) {

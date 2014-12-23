@@ -1,0 +1,394 @@
+
+Running node-supervisor with
+  program 'index.js'
+  --watch '.'
+  --extensions 'node,js'
+  --exec 'node'
+
+Starting child process with 'node index.js'
+Watching directory '/home/kebe/workspace/nodejs/CrazyRobot/server' for changes.
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Program node index.js exited with code 8
+
+Starting child process with 'node index.js'
+Sending SIGTERM to child...
