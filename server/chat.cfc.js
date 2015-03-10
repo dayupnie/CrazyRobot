@@ -3,7 +3,17 @@ var segment = require("nodejieba");
 var global = require('./global');
 segment.queryLoadDict("./node_modules/nodejieba/dict/jieba.dict.utf8", "./node_modules/nodejieba/dict/hmm_model.utf8");
 //segment.load_userdict("./")
-var pattern = new RegExp(/[！￥……（）——【】；：。，、？]/g);
+/**
+ * 正则过滤字符
+ * @type {RegExp}
+ */
+var pattern = new RegExp(/[！￥……（）——【】；：。，、]/g);
+/**
+ * 分词
+ * @param request
+ * @param response
+ * @param words
+ */
 function segmentWords(request, response, words){
   	var w = words.replace(pattern, "");		//replace special words from data
     w = w.replace(/;and/g,"&");
@@ -13,6 +23,11 @@ function segmentWords(request, response, words){
 		getAnswerFromDatabase(response,wordList);
 	});
 }
+/**
+ * 从数据库读取数据
+ * @param response
+ * @param words
+ */
 function getAnswerFromDatabase(response,words){
     var wlength = words.length;
     var id=[];
