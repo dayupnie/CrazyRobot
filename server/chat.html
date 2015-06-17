@@ -30,10 +30,10 @@
                         answerArea.innerHTML = result.data;
                     }
                     else if(result.result === NOANSWER){
-                        answerArea.innerHTML = "哦，客官不可以，我回答不了你这个问题，请用“问题～～答案”的形式告诉奴婢好吗～";
+                        answerArea.innerHTML = "奥，我暂时回答不了你这个问题，请用“问题～～答案”的形式告诉奴婢好吗～";
                     }
                     else if(result.result === HAVEADDED){
-                        answerArea.innerHTML = "好的，我接受你的“调教”了～～～";
+                        answerArea.innerHTML = "好的，我知道了～～～";
                     }
                     else if(result.result === SOURCEERROR){
                         answerArea.innerHTML = "噢，你在用什么和我聊天呢！！！我才不回答你！！";
@@ -58,8 +58,12 @@
 	</script>
 	</head>
 	<body>
-		<textarea id="question"></textarea><br />
+    <div style="margin: 0 auto; width: 500px">
+        <p><h1>CrazyRobot</h1></p>
+        <p><h3>请尽情问我的问题吧~</h3></p>
+		<textarea id="question" rows="5" maxlength="500px"></textarea><br />
 		<button onclick="getAnswer()">GET</button><br />
 		<div id="answer"></div>
+    </div>
 	</body>
 </html>
