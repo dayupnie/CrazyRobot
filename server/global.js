@@ -1,3 +1,8 @@
+/**
+ * 程序错误码集合
+ * @type {{GOTTENANSWER: number, NOANSWER: number, HAVEADDED: number, SOURCEERROR: number, RUNTIMEERROR: number}}
+ */
+
 exports.CODE={
 	GOTTENANSWER:1000,
 	NOANSWER:1001,
