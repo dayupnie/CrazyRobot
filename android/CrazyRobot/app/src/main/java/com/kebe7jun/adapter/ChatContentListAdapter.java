@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.kebe7jun.crazyrobot.R;
@@ -35,25 +34,33 @@ public class ChatContentListAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return dataList.get(position).getType();
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 2;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ContentItem item;
-//        View leftChatView = LayoutInflater.from(context).inflate(R.layout.chat_left_bubble, parent, false);
-//        View righftChatView = LayoutInflater.from(context).inflate(R.layout.chat_right_bubble, parent, false);
         if(convertView == null){
             if(dataList.get(position).getType() == ChatContent.RECEVIED_MSG)
-                convertView = LayoutInflater.from(context).inflate(R.layout.chat_left_bubble, parent, false);
+                convertView = LayoutInflater.from(context).inflate(R.layout.chat_left_bubble, null);
             else{
-                convertView = LayoutInflater.from(context).inflate(R.layout.chat_right_bubble, parent, false);
+                convertView = LayoutInflater.from(context).inflate(R.layout.chat_right_bubble, null);
             }
             item = new ContentItem(convertView);
             convertView.setTag(item);
         }
-        else{
-            item = (ContentItem)convertView.getTag();
+        else {
+            item = (ContentItem) convertView.getTag();
         }
         item.content.setText(dataList.get(position).getContent());
         return convertView;
