@@ -13,6 +13,7 @@ import com.kebe7jun.adapter.ChatContentListAdapter;
 import com.kebe7jun.handler.ChatSendHandler;
 import com.kebe7jun.internet.InternetOperator;
 import com.kebe7jun.objects.ChatContent;
+import com.kebe7jun.values.NetValue;
 
 import org.json.JSONException;
 
@@ -73,7 +74,7 @@ public class MainActivity extends Activity {
             public void run() {
                 try {
                     String result = InternetOperator.postDataToInternet(content,
-                            "http://git.crazyforcode.org:8888/chat.cfc");
+                            NetValue.HOST_NAME+NetValue.CHAT_PAGE);
                     Bundle b = new Bundle();
                     b.putString("result", result);
                     Message msg = new Message();
