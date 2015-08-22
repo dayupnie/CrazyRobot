@@ -12,11 +12,14 @@ import android.widget.ListView;
 import com.kebe7jun.adapter.ChatContentListAdapter;
 import com.kebe7jun.handler.ChatSendHandler;
 import com.kebe7jun.internet.InternetOperator;
+import com.kebe7jun.internet.PostDataInterface;
 import com.kebe7jun.objects.ChatContent;
 import com.kebe7jun.values.NetValue;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Handler;
@@ -69,22 +72,22 @@ public class MainActivity extends Activity {
         editTextContent.setText("");
         ChatContent chatContent = new ChatContent(content, ChatContent.SENT_MSG);
         addMessage(chatContent);
-        new Thread(){
+        new PostDataInterface(content, NetValue.HOST_NAME+NetValue.CHAT_PAGE){
+
             @Override
-            public void run() {
-                try {
-                    String result = InternetOperator.postDataToInternet(content,
-                            NetValue.HOST_NAME+NetValue.CHAT_PAGE);
-                    Bundle b = new Bundle();
-                    b.putString("result", result);
-                    Message msg = new Message();
-                    msg.setData(b);
-                    handler.sendMessage(msg);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            public void onSuccess(String result) {
+                if(result!=null){
+                    ChatContent chatContent = null;
+                    try {
+                        JSONObject jsonObject = new JSONObject(result);
+                        chatContent = new ChatContent(jsonObject.getString("data"), ChatContent.RECEVIED_MSG);
+                    } catch (JSONException e) {
+                        chatContent = new ChatContent("奥，我暂时回答不了你这个问题，请用“问题～～答案”的形式告诉奴婢好吗～", ChatContent.RECEVIED_MSG);
+                    }
+                    addMessage(chatContent);
                 }
             }
-        }.start();
+        };
     }
     public void addMessage(ChatContent chatContent){
         list.add(chatContent);
