@@ -1,22 +1,14 @@
 package com.kebe7jun.internet;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by kebe on 15-1-2.
@@ -34,23 +26,50 @@ public class InternetOperator {
         return result;
     }
 
-    public static String postDataToInternet(String postData, String loginUrl) throws JSONException {
-        HttpEntityEnclosingRequestBase httpRequest = new HttpPost(loginUrl);
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("question", postData));
+    public static String postDataToInternet(String postData, String pathUrl) throws JSONException {
         try {
-            httpRequest.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-            HttpResponse httpResponse = new DefaultHttpClient().execute(httpRequest);
-            if (httpResponse.getStatusLine().getStatusCode() == 200) {
-                String strResult = null;
-                strResult = EntityUtils.toString(httpResponse.getEntity());
-                return strResult;
-            } else {
-                return httpResponse.getStatusLine().toString();
-            }
+// 建立连接
+            URL url = new URL(pathUrl);
+            HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 
-        } catch (Exception e) {
-            return null;
+
+// //设置连接属性
+            httpConn.setDoOutput(true);// 使用 URL 连接进行输出
+            httpConn.setDoInput(true);// 使用 URL 连接进行输入
+            httpConn.setUseCaches(false);// 忽略缓存
+            httpConn.setRequestMethod("POST");// 设置URL请求方法
+
+            postData = "question="+postData;
+            byte[] requestStringBytes = postData.getBytes("UTF-8");
+            httpConn.setRequestProperty("Content-length", "" + requestStringBytes.length);
+            httpConn.setRequestProperty("Content-Type", "application/octet-stream");
+            httpConn.setRequestProperty("Connection", "Keep-Alive");// 维持长连接
+            httpConn.setRequestProperty("Charset", "UTF-8");
+//            httpConn.setRequestProperty("question", postData);
+
+            OutputStream outputStream = httpConn.getOutputStream();
+            outputStream.write(requestStringBytes);
+            outputStream.close();
+
+            int responseCode = httpConn.getResponseCode();
+
+            if (HttpURLConnection.HTTP_OK == responseCode) {// 连接成功
+                StringBuffer sb = new StringBuffer();
+                String readLine;
+                BufferedReader responseReader;
+                responseReader = new BufferedReader(new InputStreamReader(httpConn.getInputStream(), "UTF-8"));
+                while ((readLine = responseReader.readLine()) != null) {
+                    sb.append(readLine).append("\n");
+                }
+                responseReader.close();
+                return sb.toString();
+            }
+            else {
+                return "{\"result\":1003}";
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return "{\"result\":1}";
         }
     }
 }

@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
             public void run() {
                 try {
                     String result = InternetOperator.postDataToInternet(content,
-                            "http://git.crazyforcode.org:8888/chat.cfc");
+                            "http://crazyforcode.org:8888/chat.cfc");
                     Bundle b = new Bundle();
                     b.putString("result", result);
                     Message msg = new Message();
