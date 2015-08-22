@@ -1,13 +1,11 @@
 package com.kebe7jun.handler;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Xml;
 
-import com.kebe7jun.crazyrobot.MainActivity;
+import com.kebe7jun.crazyrobot.ChatActivity;
 import com.kebe7jun.objects.ChatContent;
 
 import org.json.JSONException;
@@ -19,8 +17,8 @@ import java.io.UnsupportedEncodingException;
  * Created by kebe0 on 8/16/2015.
  */
 public class ChatSendHandler extends Handler {
-    MainActivity activity;
-    public ChatSendHandler(MainActivity activity){
+    ChatActivity activity;
+    public ChatSendHandler(ChatActivity activity){
         this.activity = activity;
     }
     @Override

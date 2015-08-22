@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/chatContentList"
+        android:layout_height="fill_parent"
+        android:layout_weight="8"/>
+
+    <RelativeLayout
+        android:layout_weight="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="53dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/left_chat"
+                android:layout_weight="1"
+                android:id="@+id/button"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextContent"
+                android:layout_weight="8" />
+
+            <Button
+                android:layout_height="wrap_content"
+                android:text="Send"
+                android:id="@+id/btnSendMessage"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
