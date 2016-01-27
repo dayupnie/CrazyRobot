@@ -1,0 +1,16 @@
+nohup: ignoring input
+
+Running node-supervisor with
+  program 'index.js'
+  --watch '.'
+  --extensions 'node,js'
+  --exec 'node'
+
+Starting child process with 'node index.js'
+Watching directory '/www/CrazyRobot/server' for changes.
+{ [Error: Cannot find module '../build/Release/bson'] code: 'MODULE_NOT_FOUND' }
+js-bson: Failed to load c++ bson extension, using pure JS version
+start
+/chat.html is dealing...
+/chat.cfc is dealing...
+Sending SIGHUP to child...

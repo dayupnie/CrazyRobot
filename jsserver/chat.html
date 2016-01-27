@@ -1,0 +1,69 @@
+<html>
+	<head>
+        <meta charset="utf-8" />
+	<title>CrazyRobot</title>
+	<script>
+        var 	GOTTENANSWER=1000,
+                NOANSWER=1001,
+                HAVEADDED=1002,
+                SOURCEERROR=1003;
+	function getXMLHttpRequest() {
+	    var createXHR;
+	    if (window.XMLHttpRequest) {
+	        createXHR = new XMLHttpRequest();
+	    }
+	    else {
+	        createXHR = new ActiveXObject("Microsoft.XMLHTTP");
+	    }
+	    return createXHR;
+	}
+	function getAnswer(){
+	    var Jsonhttp = getXMLHttpRequest();
+        var answerArea = document.getElementById("answer");
+        var questionArea = document.getElementById("question");
+        var question = questionArea.value.replace(/&/g, ";and");
+	    Jsonhttp.onreadystatechange = function () {
+	        if (Jsonhttp.readyState == 4 && Jsonhttp.status == 200) {
+                try {
+                    var result = eval('(' + Jsonhttp.responseText + ')');
+                    if(result.result === GOTTENANSWER){
+                        answerArea.innerHTML = result.data;
+                    }
+                    else if(result.result === NOANSWER){
+                        answerArea.innerHTML = "奥，我暂时回答不了你这个问题，请用“问题～～答案”的形式告诉奴婢好吗～";
+                    }
+                    else if(result.result === HAVEADDED){
+                        answerArea.innerHTML = "好的，我知道了～～～";
+                    }
+                    else if(result.result === SOURCEERROR){
+                        answerArea.innerHTML = "噢，你在用什么和我聊天呢！！！我才不回答你！！";
+                    }
+                    else{
+                        answerArea.innerHTML = "我也不知道为什么不能回答你。。。";
+                    }
+                }
+                catch(e) {
+                    answerArea.innerHTML = "Server ERROR.";
+                }
+	        }
+            else{
+                document.getElementById("answer").innerHTML="Sorry, you can't access the server."
+            }
+	    }
+	    Jsonhttp.open("POST", "/chat.cfc", true);
+	    Jsonhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	    Jsonhttp.send("question="+question);
+        answerArea.innerHTML = "Loading...";
+	}
+	</script>
+	</head>
+	<body>
+    <div style="margin: 0 auto; width: 500px">
+        <p><h1>CrazyRobot</h1></p>
+        <p><h3>请尽情问我的问题吧~</h3></p>
+		<textarea id="question" rows="5" maxlength="500px"></textarea><br />
+		<button onclick="getAnswer()">GET</button><br />
+		<div id="answer"></div>
+    </div>
+	</body>
+</html>
