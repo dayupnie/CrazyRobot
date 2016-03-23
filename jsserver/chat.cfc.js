@@ -1,6 +1,7 @@
 var webTools = require("./WebTools");
 var segment = require("nodejieba");
 var global = require('./global');
+
 segment.queryLoadDict("./node_modules/nodejieba/dict/jieba.dict.utf8", "./node_modules/nodejieba/dict/hmm_model.utf8");
 //segment.load_userdict("./")
 /**
@@ -14,13 +15,13 @@ var pattern = new RegExp(/[！￥……（）——【】；：。，、]/g);
  * @param response
  * @param words
  */
-function segmentWords(request, response, words){
+function segmentWords(words, callback){
   	var w = words.replace(pattern, "");		//replace special words from data
     w = w.replace(/;and/g,"&");
   	//console.log(segment);
   	segment.queryCut(w, function(wordList) {
        // console.log(wordList);
-		getAnswerFromDatabase(response,wordList);
+		getAnswerFromDatabase(wordList, callback);
 	});
 }
 /**
@@ -28,7 +29,7 @@ function segmentWords(request, response, words){
  * @param response
  * @param words
  */
-function getAnswerFromDatabase(response,words){
+function getAnswerFromDatabase(words, callback){
     var wlength = words.length;
     var id=[];
     var tmp = 0;
@@ -43,8 +44,9 @@ function getAnswerFromDatabase(response,words){
         webTools.mongo.find({question:{$regex:'.*'+words[i]+'.*'}},function(err,docs){
             tmp1++;
             if(err){
-                response.write('{"result":'+global.CODE.RUNTIMEERROR+'}');
-                response.end();
+                // response.write('{"result":'+global.CODE.RUNTIMEERROR+'}');
+                // response.end();
+                callback(global.CODE.RUNTIMEERROR);
             }
             else{
                 for(var j = 0; j<docs.length; j++){
@@ -52,11 +54,16 @@ function getAnswerFromDatabase(response,words){
                 }
             }
             if(tmp1 === id_length){
-                doLastWork(response,id,id_length);
+                doLastWork(id,id_length, callback);
             }
         });
     }
 }
+
+function getAnswer(words, callback){
+    segmentWords(words, callback);
+}
+
 function findBestAnswerId(id){
     id.sort();
     var tmp = id[0];
@@ -112,31 +119,29 @@ function findBestAnswerId(id){
     result['count'] = max;
     return result;
 }
-function doLastWork(response,id,id_length){
+
+function doLastWork(id,id_length, callback){
     if(id.length == 0){
-        response.write('{"result":'+global.CODE.NOANSWER+'}');
-        response.end();
+        callback(global.CODE.RUNTIMEERROR);
         return;
     }
     var result = findBestAnswerId(id);
     if(result['count']<id_length/2.0){
-        response.write('{"result":'+global.CODE.NOANSWER+'}');
-        response.end();
+        callback(global.CODE.NOANSWER);
         return;
     }
     else{
         webTools.mongo.find({_id:result['id']},function(err,answer){
             if(err) {
-                response.write('{"result":' + global.CODE.RUNTIMEERROR + '}');
-                response.end();
+                callback(global.CODE.RUNTIMEERROR);
             }
             else{
-                response.write('{"result":'+global.CODE.GOTTENANSWER+',"data":"'+answer[0].answer+'"}');
-                response.end();
+                callback(global.CODE.GOTTENANSWER, answer[0].answer);
             }
         })
     }
 }
+
 function start(request, response){
 	var querystring = require("querystring");
 	response.writeHead(200, {"Content-Type": "text/plain"});
@@ -161,8 +166,7 @@ function start(request, response){
         if(query['question'].indexOf("～～")>0){
             tag = 2;
         };
-        if(tag!=0)
-		{
+        if(tag!=0){
             if(tag == 1)
                 var info = query['question'].split("~~");
             else
@@ -193,8 +197,12 @@ function start(request, response){
 		}
 		else
 		{
-			segmentWords(request, response, query['question']);
+			getAnswer(query['question'], function(code, result){
+                response.write('{"result":'+code+',"data":"'+result+'"}');
+                response.end();
+            });
 		}
 	});
 }
 exports.start = start;
+exports.getAnswer = getAnswer;

@@ -1,6 +1,7 @@
 var fs=require('fs');
 var rs = fs.createReadStream("./chat.html");
 var chat = require('./chat.cfc');
+var bot = require('./bot');
 var html = "";
 /**
  * 读取HTML文件内容，程序启动时直接读取，为了更加快速
@@ -30,5 +31,11 @@ function dealChatHtml(request,response){
     response.write(html);
     response.end();
 }
+
+function receivedHook(request, response){
+	bot.receivedHook(request, response);
+}
+
 exports.dealChatMain = dealChatMain;
 exports.dealChatHtml = dealChatHtml;
+exports.receivedHook = receivedHook;

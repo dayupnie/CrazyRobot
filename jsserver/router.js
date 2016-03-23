@@ -12,10 +12,13 @@ function route(resquest, response){
      */
 	handle['/chat.cfc']=deal.dealChatMain;
 	handle['/chat.html']=deal.dealChatHtml;
+	handle['/']=deal.receivedHook;
+
 	var path=url.parse(resquest.url).pathname;
+	console.log(path+" is dealing...");
+	
 	if(typeof handle[path] === 'function')
 	{
-		console.log(path+" is dealing...");
         //设置相应的handle
 		handle[path](resquest, response);
 	}
