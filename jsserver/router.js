@@ -4,7 +4,6 @@
  */
 var deal=require('./dealMain');
 var url = require('url');
-var user = require('user');
 function route(resquest, response){
 	var handle={};
     /**
@@ -13,7 +12,6 @@ function route(resquest, response){
      */
 	handle['/chat.cfc']=deal.dealChatMain;
 	handle['/chat.html']=deal.dealChatHtml;
-    handle['login'] = user.login;
 	var path=url.parse(resquest.url).pathname;
 	if(typeof handle[path] === 'function')
 	{
