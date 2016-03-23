@@ -16,7 +16,8 @@ function sendMessage(chat_id, text, parse_mode){
 		// +"chat_id="+chat_id+"&text="+text
 		, 
 			form:{chat_id:chat_id,
-				text:text},
+				text:text,
+				parse_mode:parse_mode},
 		}, function(err, httpResponse, body){
 			console.log(body);
 		});

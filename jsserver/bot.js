@@ -10,10 +10,10 @@ function receivedHook(request, response){
 }
 function dealData(request, response, responsedata){
 	data = JSON.parse(responsedata);
-	// console.log(data);
+	console.log(data);
 	chat.getAnswer(data.message.text, function(code, answer){
 		// console.log(data.message.text);
-		botapi.sendMessage(data.message.chat.id, answer);
+		botapi.sendMessage(71678461, answer);
 	});
 	response.end();
 }

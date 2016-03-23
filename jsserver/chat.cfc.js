@@ -1,6 +1,7 @@
 var webTools = require("./WebTools");
 var segment = require("nodejieba");
 var global = require('./global');
+var exec = require('child_process').exec; 
 
 segment.queryLoadDict("./node_modules/nodejieba/dict/jieba.dict.utf8", "./node_modules/nodejieba/dict/hmm_model.utf8");
 //segment.load_userdict("./")
@@ -61,7 +62,28 @@ function getAnswerFromDatabase(words, callback){
 }
 
 function getAnswer(words, callback){
-    segmentWords(words, callback);
+
+    if(words == '成绩'){
+        exec("python /home/{user}/workspace/CQUTStudentScoreSubscribeSystem/src/GetScore.py 1130307xxxx xxxxxxxx 1502345xxxx x", function(err,stdout,stderr){
+            text = "";
+            if(err){
+                text = "未查询到成绩！";
+            }
+            else{
+                data = JSON.parse(stdout);
+                for(var i = 0; i<data.length; i++){
+                    text+="名字：<b>"+data[i].name+"</b>\n";
+                    text+="分数：<b>"+data[i].score+"</b>\n";
+                    text+="学分：<b>"+data[i].credit+"</b>\n";
+                    text+="\n"
+                }
+            }
+            callback(global.CODE.GOTTENANSWER, text);
+        });
+    }
+    else{
+        segmentWords(words, callback);
+    }
 }
 
 function findBestAnswerId(id){
