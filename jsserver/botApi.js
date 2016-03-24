@@ -3,9 +3,6 @@ var request = require('request');
 
 function sendMessage(chat_id, text, parse_mode){
 	parse_mode = 'HTML';
-	if(!text){
-		text = "奥，我暂时回答不了你这个问题，请用“问题～～答案”的形式告诉奴婢好吗～";
-	}
 	// console.log(global.config);
 	console.log('http://teleapi.crazyforcode.org/bot'
 		+global.config.telegrambottoken+"/sendMessage?"

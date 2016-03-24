@@ -63,11 +63,44 @@ function getAnswerFromDatabase(words, callback){
 
 function getAnswer(words, callback){
 
+        var tag =0;
+        if(words.indexOf("~~")>0){
+            tag = 1;
+        };
+        if(words.indexOf("～～")>0){
+            tag = 2;
+        };
+        if(tag!=0){
+            if(tag == 1)
+                var info = words.split("~~");
+            else
+                var info = words.split("～～");
+            if(info.length > 2){
+                callback(global.CODE.NOANSWER);
+            }
+            else{
+                var queandans = {};
+                var insert = new webTools.mongo();
+                insert.question = info[0];
+                insert.answer = info[1];
+                insert.save(function(err){
+                    if(err) {
+                        callback(global.CODE.RUNTIMEERROR);
+                    }
+                    else{
+                        callback(global.CODE.HAVEADDED);
+                    }
+                });
+            }
+            return;
+        }
+
     if(words == '成绩'){
         exec("python /home/{user}/workspace/CQUTStudentScoreSubscribeSystem/src/GetScore.py 1130307xxxx xxxxxxxx 1502345xxxx x", function(err,stdout,stderr){
             text = "";
             if(err){
                 text = "未查询到成绩！";
+                callback(global.CODE.NOANSWER, text);
             }
             else{
                 data = JSON.parse(stdout);
@@ -181,49 +214,10 @@ function start(request, response){
 			return;
 		}
 		var query = querystring.parse(postData);
-        var tag =0;
-        if(query['question'].indexOf("~~")>0){
-            tag = 1;
-        };
-        if(query['question'].indexOf("～～")>0){
-            tag = 2;
-        };
-        if(tag!=0){
-            if(tag == 1)
-                var info = query['question'].split("~~");
-            else
-                var info = query['question'].split("～～");
-            if(info.length > 2){
-                response.writeHead(200);
-                response.write('{"result":'+global.CODE.NOANSWER+'}');
-                response.end();
-            }
-            else{
-                var queandans = {};
-                var insert = new webTools.mongo();
-                insert.question = info[0];
-                insert.answer = info[1];
-                insert.save(function(err){
-                    if(err) {
-                        response.writeHead(200);
-                        response.write('{"result":' + global.CODE.RUNTIMEERROR + '}');
-                        response.end();
-                    }
-                    else{
-                        response.writeHead(200);
-                        response.write('{"result":'+global.CODE.HAVEADDED+'}');
-                        response.end();
-                    }
-                });
-            }
-		}
-		else
-		{
 			getAnswer(query['question'], function(code, result){
                 response.write('{"result":'+code+',"data":"'+result+'"}');
                 response.end();
             });
-		}
 	});
 }
 exports.start = start;
