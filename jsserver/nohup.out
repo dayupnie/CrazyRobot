@@ -1,0 +1,44 @@
+
+Running node-supervisor with
+  program 'index.js'
+  --watch '.'
+  --extensions 'node,js'
+  --exec 'node'
+
+Starting child process with 'node index.js'
+Watching directory '/home/kebe/workspace/CrazyRobot/jsserver' for changes.
+Press rs for restarting the process.
+
+events.js:72
+        throw er; // Unhandled 'error' event
+              ^
+Error: EBADF, read
+start
+/ is dealing...
+{ update_id: 163292405,
+  message: 
+   { message_id: 217,
+     from: { id: 71678461, first_name: 'KEBE', username: 'kebe7jun' },
+     chat: 
+      { id: 71678461,
+        first_name: 'KEBE',
+        username: 'kebe7jun',
+        type: 'private' },
+     date: 1458800220,
+     text: '成绩' } }
+http://teleapi.crazyforcode.org/bot129712310:AAGBoTfi7Nfidb6OFY-XmoToqIUYUsrhvPM/sendMessage?chat_id=71678461&text=未查询到成绩！
+{"ok":true,"result":{"message_id":218,"from":{"id":129712310,"first_name":"KEBE-Bot","username":"kebe_bot"},"chat":{"id":71678461,"first_name":"KEBE","username":"kebe7jun","type":"private"},"date":1458800235,"text":"\u672a\u67e5\u8be2\u5230\u6210\u7ee9\uff01"}}
+/ is dealing...
+{ update_id: 163292406,
+  message: 
+   { message_id: 219,
+     from: { id: 71678461, first_name: 'KEBE', username: 'kebe7jun' },
+     chat: 
+      { id: 71678461,
+        first_name: 'KEBE',
+        username: 'kebe7jun',
+        type: 'private' },
+     date: 1458800249,
+     text: '成绩' } }
+http://teleapi.crazyforcode.org/bot129712310:AAGBoTfi7Nfidb6OFY-XmoToqIUYUsrhvPM/sendMessage?chat_id=71678461&text=未查询到成绩！
+{"ok":true,"result":{"message_id":220,"from":{"id":129712310,"first_name":"KEBE-Bot","username":"kebe_bot"},"chat":{"id":71678461,"first_name":"KEBE","username":"kebe7jun","type":"private"},"date":1458800256,"text":"\u672a\u67e5\u8be2\u5230\u6210\u7ee9\uff01"}}
