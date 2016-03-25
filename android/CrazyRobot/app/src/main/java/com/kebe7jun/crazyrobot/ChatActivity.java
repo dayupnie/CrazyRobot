@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.kebe7jun.adapter.ChatContentListAdapter;
-import com.kebe7jun.handler.ChatSendHandler;
 import com.kebe7jun.internet.PostDataInterface;
 import com.kebe7jun.objects.ChatContent;
 import com.kebe7jun.values.NetValue;
@@ -27,7 +26,6 @@ public class ChatActivity extends Activity {
     private ListView chatContentListView = null;
     private EditText editTextContent = null;
     private Button btnSendMessage = null;
-    private ChatSendHandler handler = null;
     private ChatContentListAdapter chatContentListAdapter;
 
     List<ChatContent> list = new ArrayList<>();
@@ -41,7 +39,6 @@ public class ChatActivity extends Activity {
         chatContentListView = (ListView)findViewById(R.id.chatContentList);
         editTextContent = (EditText)findViewById(R.id.editTextContent);
         btnSendMessage = (Button)findViewById(R.id.btnSendMessage);
-        handler = new ChatSendHandler(this);
         chatContentListAdapter = new ChatContentListAdapter(list, this);
         editTextContent.setOnKeyListener(new View.OnKeyListener() {
             @Override

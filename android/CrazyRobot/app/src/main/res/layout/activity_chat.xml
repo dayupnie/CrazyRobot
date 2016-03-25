@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:id="@+id/chatContentList"
         android:layout_height="fill_parent"
+        android:divider="@null"
         android:layout_weight="8"/>
 
     <RelativeLayout

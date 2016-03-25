@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kebe7jun.crazyrobot.R;
@@ -63,12 +64,15 @@ public class ChatContentListAdapter extends BaseAdapter {
             item = (ContentItem) convertView.getTag();
         }
         item.content.setText(dataList.get(position).getContent());
+//        item.imageView.setImageResource(R.drawable.my_logo);
         return convertView;
     }
     private class ContentItem{
         public TextView content;
+        public ImageView imageView;
         public ContentItem(View view){
             content = (TextView)view.findViewById(R.id.chatContent);
+            imageView = (ImageView)view.findViewById(R.id.header);
         }
     }
 }
